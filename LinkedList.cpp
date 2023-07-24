@@ -31,6 +31,7 @@ class List {
     void deletehead();
     void deletetail();
     void search(int el);
+    void insert(int el, int p);
     void middle();
     void display();
 
@@ -86,6 +87,18 @@ void List :: search (int el){
     }
 }
 
+// void List :: insert (int el, int p){
+
+//     Node * temp = head ;
+//     int c = 0;
+//     while(c < p-1){
+//         temp = temp -> next;
+//         c++;
+//     }
+//     temp->next = new Node(el,temp->next);
+    
+// }
+
 
 
 void List :: display(){
@@ -113,6 +126,7 @@ int main (){
     l.search(5);
     l.search(3);
     l.search(100);
+    // l.insert(8,2);
 
     l.display();
 
