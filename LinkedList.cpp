@@ -31,7 +31,7 @@ class List {
     void deletehead();
     void deletetail();
     void search(int el);
-    void insert(int el, int p);
+    void insertAtIndex(int el, int p);
     void middle();
     void display();
 
@@ -76,35 +76,34 @@ void List :: deletetail(){
 
 void List :: search (int el){
 
-    Node * temp = head;
-    int x = 0;
-    while (temp->data != el){
-        temp = temp -> next; x++;
-        if (temp == 0){ cout<<"Element Does Not Exists"<<endl; break; }
-    }
-    if (temp->data == el){
+    Node *temp = head;
+    int a = 0;
+    for (int x = 0; temp -> next !=0 ; x++ ){
+        temp = temp -> next;
+         if (temp->data == el){
+            a++;
         cout<<"Element found at index "<<x<<endl;
     }
+    }
+    if (a == 0){cout<<"Element Does Not Exists"<<endl;}
+   
 }
 
-// void List :: insert (int el, int p){
+void List :: insertAtIndex (int el, int p){
 
-//     Node * temp = head ;
-//     int c = 0;
-//     while(c < p-1){
-//         temp = temp -> next;
-//         c++;
-//     }
-//     temp->next = new Node(el,temp->next);
-    
-// }
+    Node * temp = head;
+    for (int i = 0; i<p-1; i++){
+        temp = temp -> next;
+    }
+    temp -> next = new Node (el, temp -> next);    
+}
 
 
 
 void List :: display(){
 
-    Node * temp = head;
-    while(temp != 0){
+    Node *temp = head;
+    while(temp->next != NULL){
         cout<<temp->data<<" -> ";
         temp = temp -> next;
     }
@@ -120,14 +119,12 @@ int main (){
     l.addtohead(2);
     l.addtohead(1);
     l.addtotail(6);
-    l.deletehead();
     l.deletetail();
     l.search(2);
     l.search(5);
     l.search(3);
     l.search(100);
-    // l.insert(8,2);
-
+    l.insertAtIndex(8,2);
     l.display();
 
     return 0;
